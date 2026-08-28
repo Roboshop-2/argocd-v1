@@ -12,7 +12,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/snraju98/argocd.git
+    repoURL: https://github.com/Roboshop-2/argocd-v1.git
     targetRevision: main
     path: applications/cluster/sc
 
