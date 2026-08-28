@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-lbc
+  name: catalogue
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
