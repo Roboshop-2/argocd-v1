@@ -1,26 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: storage-classes
+  name: roboshop-dev
   namespace: argocd
+  # The finalizer enables cascading deletes (deleting this app deletes its resources)
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
 spec:
-  # The argo CD project this application belongs to
+  # The Argo CD project this application belongs to
   project: default
 
   source:
-    repoURL: https://github.com/snraju98/argocd.git
+    repoURL: https://github.com/Roboshop-2/argocd-v1.git
     targetRevision: main
-    path: applications/cluster/sc
+    path: applications/roboshop-dev
 
   # Destination configuration pointing to the target cluster and namespace
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
-  
+    namespace: roboshop-dev
+
   syncPolicy:
     automated:
       prune: true       # Automatically deletes resources no longer in Git

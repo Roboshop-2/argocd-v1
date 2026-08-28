@@ -1,25 +1,27 @@
+# THis is cluster level app-of-apps
+# Individual applications exist in applications/cluster folder
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: storage-classes
+  name: cluster
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   # The argo CD project this application belongs to
   project: default
 
   source:
-    repoURL: https://github.com/snraju98/argocd.git
+    repoURL: https://github.com/Roboshop-2/argocd-v1.git
     targetRevision: main
-    path: applications/cluster/sc
+    path: applications/cluster
 
   # Destination configuration pointing to the target cluster and namespace
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: argocd
   
   syncPolicy:
     automated:
