@@ -10,7 +10,6 @@ spec:
   project: default
 
   source:
-    chart: catalogue
     repoURL: https://github.com/Roboshop-2/catalogue-config.git
     targetRevision: main # chart version
     path: .
