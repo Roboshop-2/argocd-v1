@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-lbc
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # The argo CD project this application belongs to
+  project: default
+
+  source:
+    chart: aws-load-balancer-controller
+    repoURL: https://github.com/Roboshop-2/catalogue-config.git
+    targetRevision: main # chart version
+    path: .
+    helm:
+      # --set
+      valueFiles:
+      - values-dev.yaml
+      - values.yaml
+  # Destination configuration pointing to the target cluster and namespace
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: roboshop-dev
+  
+  syncPolicy:
+    automated:
+      prune: true       # Automatically deletes resources no longer in Git
+      selfHeal: true  
