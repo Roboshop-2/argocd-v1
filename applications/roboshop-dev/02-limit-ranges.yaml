@@ -7,14 +7,14 @@ spec:
   limits:
     - type: Container
       default:                 # Injected if a user leaves limits blank
-        cpu: "120m"
-        memory: "156Mi"
+        cpu: "150m"
+        memory: "256Mi"
       defaultRequest:          # Injected if a user leaves requests blank
         cpu: "100m"
         memory: "128Mi"
       max:                     # Blocked if a container requests higher than this
-        cpu: "150m"
-        memory: "256Mi"
+        cpu: "520m"
+        memory: "768Mi"
       min:                     # Blocked if a container requests lower than this
         cpu: "50m"
         memory: "64Mi"
